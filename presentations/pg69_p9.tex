@@ -1,0 +1,82 @@
+\documentclass[a4paper, 12pt]{report}
+
+\usepackage[a4paper]{geometry}
+\geometry{a4paper,tmargin=1in,bmargin=1in}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+%Custom command to shorten mathbb for basic number sets
+\newcommand{\bb}[1]{\mathbb{#1}}
+
+%Custom command for defining problem{#}{theorem}proof:{text}blacksquare
+\newcommand{\proof}[3]{
+	\begin{enumerate}
+		\item[\bf{Problem #1}] #2
+		\begin{enumerate}
+			\item[\bf{Proof:}]
+			#3
+		\end{enumerate}
+	\end{enumerate}
+	\begin{flushright}
+		$\blacksquare$
+	\end{flushright}
+}
+
+%Custom command for defining problem{#}{text}
+\newcommand{\problem}[2]{
+	\begin{enumerate}
+		\item[\bf{Problem #1}] 
+		#2
+	\end{enumerate}
+}
+
+%Custom command for defining {item}{theorem}proof:{text}blacksquare
+%does require \b{enum} ... \e{enum} or \problem
+\newcommand{\subproof}[3]{
+	\item[#1] #2
+	\item[\bf{Proof:}]
+	#3 
+	\begin{flushright}
+		$\blacksquare$
+	\end{flushright}
+}
+
+\begin{document}
+
+%\title{Math 322 -- Linear Algebra \\ \vspace{7px} \large{Homework 1}}
+%\author{Amandeep Gill}
+%\maketitle
+
+\problem{9}{
+	For the following $T:\bb{R}^2 \rightarrow \bb{R}^2$ state why $T$ is not linear
+
+	\subproof{(a)}{
+		$T(a_1,a_2) = (1,a_2)$	
+	}{
+		$T(0,0) = (1,0) \ne (0,0)$
+	}
+	\subproof{(b)}{
+		$T(a_1,a_2) = (a_1,{a_2}^2)$	
+	}{
+		$T(2(1,1)) = T(2,2) = (2,4) \ne 2T(1,1) = 2(1,1) = (2,2)$
+	}
+	\subproof{(c)}{
+		$T(a_1,a_2) = (\sin a_1,0)$	
+	}{
+		$T(\frac{1}{2}(\pi,0)) = (\sin \frac{\pi}{2}, 0) = (1,0) \ne$
+		$\frac{1}{2}T(\pi,0) = \frac{1}{2}(sin \pi, 0) = (0,0)$
+	}
+	\subproof{(d)}{
+		$T(a_1,a_2) = (|a_1|,a_2)$	
+	}{
+		$T(-1(1,1)) = (|-1|,-1) = (1,-1) \ne -1T(1,1) = (-1,-1)$
+	}
+	\subproof{(e)}{
+		$T(a_1,a_2) = (a_1 + 1,a_2)$	
+	}{
+		$T(0,0) = (1,0) \ne (0,0)$
+	}
+}
+\end{document}
